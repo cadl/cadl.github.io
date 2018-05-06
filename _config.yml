@@ -17,9 +17,10 @@ title: 三月兔亭
 email: ctrlaltdeleteliu@gmail.com
 description: "cadl 的三月兔亭" # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://po.lollipush.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://cadl.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: ctrlaltdeletel
 github_username:  cadl
+google_analytics: true
 
 # Build settings
 markdown: kramdown

@@ -5,19 +5,19 @@ permalink: /about/
 ---
 
 
-## 关于三月兔亭
+### 关于三月兔亭
 
 三月兔亭是《银河英雄传说》里一个餐厅的名字
 
 
-## 关于我自己
+### 关于我自己
 
 人是不断在变的，更好或更糟糕
 
 所以介绍一个人曾经和现在的喜恶，总比介绍一个人来得简单
 
 
-喜欢(过)的:
+#### 喜欢(过)的:
 - 歌手/乐队
     - 戴佩妮
     - The Beatles
@@ -95,7 +95,7 @@ permalink: /about/
     - vscode
 
 
-社交帐号：
+#### 社交帐号：
 - [微博](https://weibo.com/cadl)
 - [豆瓣](https://www.douban.com/people/ctrlaltdeletel/)
 - [知乎](https://www.zhihu.com/people/cadl)

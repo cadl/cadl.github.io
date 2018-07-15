@@ -75,16 +75,12 @@ permalink: /about/
     - _刀剑的时代已经过去，接下来的战斗要拿起枪_ - [fleure](https://www.douban.com/people/fleure/)
     - _重逢总比告别少，只少一次_ -《黑色地图》
     - _即便没有积极支持他，袖手旁观也是同罪_  -《银河英雄传说》
-- 足球俱乐部
-    - 曼城
 - 足球运动员
     - 大卫席尔瓦
     - 阿圭罗
     - 亚当约翰逊
     - 孔帕尼
     - 汪嵩
-- NBA队伍
-    - 火箭
 - 篮球运动员
     - 麦迪
     - 库里
@@ -102,3 +98,4 @@ permalink: /about/
 - [GitHub](https://github.com/cadl)
 - [Twitter](https://twitter.com/ctrlaltdeletel)
 - [stackoverflow](https://stackoverflow.com/users/1600743/cadl)
+- [openflights](https://openflights.org/user/cadl)

@@ -40,6 +40,7 @@ permalink: /about/
     - 椎名林檎
     - AC/DC
     - 窦靖童
+    - Kamasi Washington
 - 漫画作品
     - 棒球英豪
     - 四叶游戏

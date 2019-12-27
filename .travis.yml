@@ -24,16 +24,16 @@ script:
   rm -f jekyll.pid
 branches:
   only:
-  - master
+  - src
 deploy:
   provider: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
   keep-history: true
   local-dir: _site
-  target-branch: gh-pages
+  target-branch: master
   on:
-    branch: master
+    branch: src
 env:
   global:
     secure: VGHOKWwz9YjaTBSpjTaEaTH44xEqXMR16m1mAHH82Wt3UiLMY5X4txpbEFKn7Ky6u2NkyexQ2QKpqvP7rClXV6aJIBHVCJr/gi7JxMBgu+CDX8dYzkKmawgVul0IKJFFSSOj2W/0kjXCp8ojrwN1bPCDVowQD++flXhaN38LMJjQ5a+/YcLgcD+pBKIc/8C/wGlSetEg51cIj1o7MHEijOw+J9U9yN+n3U6h5gKqHlt4XAt+2LnhQP9UeP7GJxweOEmZWXdazBzQtdFiDzL21VmOYf7kp8wlCT2bKpL9d0s4vrqn4q8LjlLSlnT7CWXKCrZo8d1LOBdRNOQBb99eo9AnwdN8qW6H3wMVMNvs3TMrjJzRDseJxA5SiaAHGwl+/AT6iYPxnkUh4UwTxIaq8rE4slDFfo8jlq0oYpBTALCmuEgsWBW874o3jdf1at7KAJ3pzVidfOsswdr0pMENESk7T/akHq8uU7TIZzOM4oRdNR/3ftbNJK99xE3McuUWSKL8jfof9ToDRsvZfSvwB9vVA1u61Y1+pM58QdilFhgDLg3KeSlsdnO/hu6nZDqW8oVErYQHucwSVqqqXg/CMM/askWUS3/cZmSD/l6I5POWoeWEuENF/LF0StN7U2gB3FCEKaBHrH/PbFYBfp0hg53tet8I2HLKh6JZMp+u/oE=

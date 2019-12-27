@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>tech weekly 第 03 期</title>
+  <meta name="description" content="大家好，这里是 tech weekly 第 03 期。">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://cadl.github.io/2018/05/20/tech-weekly-03/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="三月兔亭" href="https://cadl.github.io/feed.xml">
+
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="ctrlaltdeletel">
+  <meta name="twitter:title" content="tech weekly 第 03 期">
+  <meta name="twitter:description" content="大家好，这里是 tech weekly 第 03 期。">
+  
+    <meta name="twitter:creator" content="ctrlaltdeletel">
+  
+  
+
+  <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Bitter:400,700,400italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+</script>
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53244426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-53244426-1');
+</script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">三月兔亭</a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/archives/">Archives</a>
+      
+        
+        <a class="page-link" href="https://github.com/cadl">GitHub</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    
+      <h1 class="post-title" itemprop="name headline">tech weekly 第 03 期</h1>
+    
+    <p class="post-meta"><time datetime="2018-05-20T14:40:00+00:00" itemprop="datePublished">May 20, 2018</time> •
+  
+    
+    
+      
+    
+      
+    
+      
+        <a href="/categories/tech-weekly/">tech-weekly</a>
+      
+    
+      
+    
+  
+
+
+
+</p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>大家好，这里是 tech weekly 第 03 期。</p>
+
+<h1 id="新闻">新闻</h1>
+<h3 id="titus-the-netflix-container-management-platform-is-now-open-source"><a href="https://medium.com/netflix-techblog/titus-the-netflix-container-management-platform-is-now-open-source-f868c9fb5436">Titus, the Netflix container management platform, is now open source</a></h3>
+
+<p>Netflix 开源了他们内部使用的基于 Mesos 的容器管理平台<a href="https://github.com/Netflix/titus">Titus</a>。Netflix 之前的一些<a href="https://medium.com/netflix-techblog/the-evolution-of-container-usage-at-netflix-3abfc096781b">博客(The Evolution of Container Usage at Netflix)</a>里也有提到过这个系统。</p>
+
+<h3 id="google-修改了-code-of-conduct"><a href="https://abc.xyz/investor/other/google-code-of-conduct.html">Google 修改了 Code of Conduct</a></h3>
+
+<p>删除了原来位于文首的关于 <code class="highlighter-rouge">Don't be evil</code> 的段落，但是最后的总结(<code class="highlighter-rouge">And remember… don’t be evil, and if you see something that you think isn’t right – speak up!</code>)还在。</p>
+
+<h1 id="文章">文章</h1>
+<h3 id="scaling-slacks-job-queue"><a href="https://slack.engineering/scaling-slacks-job-queue-687222e9d100">Scaling Slack’s Job Queue</a></h3>
+
+<p>slack 关于任务队列系统的一篇博文。slack 在他们应用中大量使用了该系统，诸如推送提醒、获取 url 信息、计算账单等长耗时的操作都是通过异步任务来完成。平均一天14亿次异步任务执行，高峰33000次/秒。</p>
+
+<p>slack 原有的任务队列系统基于 redis 实现，web 应用和任务执行 worker 都与 redis 集群直接连接。原有方案有一个主要的问题就是一旦任务消费速度比不上生产速度，redis 这种内存数据库就可能就会因为消息的不断挤压而宕掉。</p>
+
+<p>slack 考虑到更换架构的成本，根据原有的架构，在 redis 前放了一层 kafka，web 应用通过一个无状态的 HTTP 服务，向 kafka 中写入数据。开发了一个叫 JQRelay 的程序，读取每个 kafka topic partition 中的数据，写入到 redis 中。并由 JQRelay 控制写入 redis 速率，避免 redis 挤爆。</p>
+
+<p>文中除了前后的架构说明，还介绍了他们 kafka 集群的配置、如何对整个系统进行性能/容错测试，以及如何将新系统滚动升级到线上的过程。个人觉得整篇文章写得非常用心，实践性很强。</p>
+
+<h3 id="algorithms-behind-modern-storage-systems"><a href="https://queue.acm.org/detail.cfm?id=3220266">Algorithms Behind Modern Storage Systems</a></h3>
+
+<p>介绍存储系统中常见的两种数据组织方式：B-tree 和 LSM，以及他们使用场景。除了文中介绍的 SSTables，bitcask 也是一种 log structured 这种策略的存储引擎。很多非关系型数据库比如 LevelDB、Cassandra、Hbase 等等也都使用了 log structured 这种方式。</p>
+
+<h3 id="mysql索引背后的数据结构及算法原理"><a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html">MySQL索引背后的数据结构及算法原理</a></h3>
+
+<p>局部性原理/磁盘预读/MyISAM 和 InnoDB 索引实现上的区别/聚簇索引。</p>
+
+<p>使用 InnoDB 时，出于数据插入性能考虑，一定要使用自增主键。</p>
+
+<h3 id="linux-test-command-tutorial-for-beginners-with-examples"><a href="https://www.howtoforge.com/linux-test-command/">Linux test Command Tutorial for Beginners (with Examples)</a></h3>
+
+<p>使用 test command 的几种姿势。检查字符串/数字/文件属性等。</p>
+
+<h1 id="链接">链接</h1>
+
+<ul>
+  <li><a href="https://queue.acm.org/detail.cfm?id=3220266">Algorithms Behind Modern Storage Systems</a></li>
+  <li><a href="https://github.com/Netflix/titus">Titus</a></li>
+  <li><a href="https://medium.com/netflix-techblog/the-evolution-of-container-usage-at-netflix-3abfc096781b">The Evolution of Container Usage at Netflix</a></li>
+  <li><a href="https://abc.xyz/investor/other/google-code-of-conduct.html">Google Code of Conduct</a></li>
+  <li><a href="https://slack.engineering/scaling-slacks-job-queue-687222e9d100">Scaling Slack’s Job Queue</a></li>
+  <li><a href="https://queue.acm.org/detail.cfm?id=3220266">Algorithms Behind Modern Storage Systems</a></li>
+  <li><a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html">MySQL索引背后的数据结构及算法原理</a></li>
+  <li><a href="https://www.howtoforge.com/linux-test-command/">Linux test Command Tutorial for Beginners (with Examples)</a></li>
+</ul>
+
+  </div>
+
+  
+    <div class="post-comments" itemprop="comment">
+      <hr />
+<h1>Comments</h1>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://cadlblog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+    </div>
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+&copy;  - Powered by <a href="https://jekyllrb.com">Jekyll</a> &amp; <a href="https://github.com/yous/whiteglass">whiteglass</a> - Subscribe via <a href="https://cadl.github.io/feed.xml">RSS</a>
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

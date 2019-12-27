@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <generator uri="http://jekyllrb.com" version="3.7.4">Jekyll</generator>
+  
+  
+  <link href="https://cadl.github.io/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://cadl.github.io/" rel="alternate" type="text/html" />
+  <updated>2019-12-27T17:11:22+00:00</updated>
+  <id>https://cadl.github.io//</id>
+
+  
+    <title type="html">三月兔亭</title>
+  
+
+  
+    <subtitle>cadl 的三月兔亭</subtitle>
+  
+
+  
+
+  
+  
+    <entry>
+      
+      <title type="html">转载：Latency numbers every programmer should know</title>
+      
+      <link href="https://cadl.github.io/2019/12/27/latency-number/" rel="alternate" type="text/html" title="转载：Latency numbers every programmer should know" />
+      <published>2019-12-27T15:00:00+00:00</published>
+      <updated>2019-12-27T15:00:00+00:00</updated>
+      <id>https://cadl.github.io/2019/12/27/latency-number</id>
+      <content type="html" xml:base="https://cadl.github.io/2019/12/27/latency-number/">&lt;p&gt;来自：&lt;a href=&quot;https://gist.github.com/hellerbarde/2843375&quot;&gt;https://gist.github.com/hellerbarde/2843375&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;L1 cache reference ......................... 0.5 ns
+Branch mispredict ............................ 5 ns
+L2 cache reference ........................... 7 ns
+Mutex lock/unlock ........................... 25 ns
+Main memory reference ...................... 100 ns             
+Compress 1K bytes with Zippy ............. 3,000 ns  =   3 µs
+Send 2K bytes over 1 Gbps network ....... 20,000 ns  =  20 µs
+SSD random read ........................ 150,000 ns  = 150 µs
+Read 1 MB sequentially from memory ..... 250,000 ns  = 250 µs
+Round trip within same datacenter ...... 500,000 ns  = 0.5 ms
+Read 1 MB sequentially from SSD* ..... 1,000,000 ns  =   1 ms
+Disk seek ........................... 10,000,000 ns  =  10 ms
+Read 1 MB sequentially from disk .... 20,000,000 ns  =  20 ms
+Send packet CA-&amp;gt;Netherlands-&amp;gt;CA .... 150,000,000 ns  = 150 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/latency.png&quot; alt=&quot;latency.png&quot; /&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+
+      
+        <category term="tech" />
+      
+
+      
+
+      
+        <summary type="html">来自：https://gist.github.com/hellerbarde/2843375</summary>
+      
+
+      
+      
+    </entry>
+  
+  
+  
+    <entry>
+      
+      <title type="html">tech weekly 第 04 期</title>
+      
+      <link href="https://cadl.github.io/2018/06/24/tech-weekly-04/" rel="alternate" type="text/html" title="tech weekly 第 04 期" />
+      <published>2018-06-24T08:00:00+00:00</published>
+      <updated>2018-06-24T08:00:00+00:00</updated>
+      <id>https://cadl.github.io/2018/06/24/tech-weekly-04</id>
+      <content type="html" xml:base="https://cadl.github.io/2018/06/24/tech-weekly-04/">&lt;p&gt;大家好，这里是 tech weekly 第 04 期。&lt;/p&gt;
+
+&lt;h1 id=&quot;文章&quot;&gt;文章&lt;/h1&gt;
+
+&lt;h3 id=&quot;introduction-to-redis-streams&quot;&gt;&lt;a href=&quot;https://redis.io/topics/streams-intro&quot;&gt;Introduction to Redis Streams&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Redis 5.0 多出了一个新数据结构 stream。简单来说就是一个深度借鉴 kafka 的 log data structure 的消息队列。数据可进行持久化，并且也有 consumer group 的概念可以挂多个消费者。&lt;/p&gt;
+
+&lt;p&gt;hhh，Redis 你现在还好意思叫自己 remote dictionary server 吗。&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-choose-a-data-format&quot;&gt;&lt;a href=&quot;https://www.svds.com/how-to-choose-a-data-format/&quot;&gt;How to Choose a Data Format&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;如何从 sequence/avro/parquet/orc 等等中选择适合你的数据格式。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.svds.com/dataformats/&quot;&gt;http://www.svds.com/dataformats/&lt;/a&gt; 对比了以上几种数据格式的特点，例如 row/column based、schema evolution等等。并针对不同量级的数量级进行了读/写性能测试。页面里的对比和图表很直观清晰。&lt;/p&gt;
+
+&lt;h3 id=&quot;adaptive-query-routing-based-on-gtid-tracking&quot;&gt;&lt;a href=&quot;http://www.proxysql.com/blog/proxysql-gtid-causal-reads&quot;&gt;Adaptive query routing based on GTID tracking&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;ProxySQL 介绍他们如何通过使用 MySQL 5.7.6 的 &lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_session_track_gtids&quot;&gt;session_track_gtids&lt;/a&gt; 功能，在 slave 上完成 causal consistency reads。&lt;/p&gt;
+
+&lt;p&gt;通过 session_track_gtids 捕获当前执行的 gtid。使用一个读取 binlog 的 server，实时获取 cluster 中每台 MySQL server 的 executed_gtid_set。通过两者的对比，达成 causal consistency reads。&lt;/p&gt;
+
+&lt;h3 id=&quot;mysql-group-replication-read-your-own-write-across-the-group&quot;&gt;&lt;a href=&quot;http://lefred.be/content/mysql-group-replication-read-your-own-write-across-the-group/&quot;&gt;MySQL Group Replication: read your own write across the group&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;介绍了 MySQL 5.7.5 的一个新功能，&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.7/en/gtid-functions.html#function_wait-for-executed-gtid-set&quot;&gt;WAIT_FOR_EXECUTED_GTID_SET&lt;/a&gt;。可以通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;select WAIT_FOR_EXECUTED_GTID_SET('3E11FA47-71CA-11E1-9E33-C80AA9429562:1-5') from foo where bar = xxx;&lt;/code&gt; 的形式，从 slave 上读到 master 上刚写的内容。&lt;/p&gt;
+
+&lt;h3 id=&quot;go-memory-management&quot;&gt;&lt;a href=&quot;https://povilasv.me/go-memory-management/&quot;&gt;Go Memory Management&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;很长的一篇文章。前半部分唠叨了半天 vsz/rss，以及 x86 和操作系统的虚拟内存、分页、MMU、TLB，linux 进程的内存布局(text/data/bss/heap/stack 段)。后半部分介绍了 TCMalloc 以及 go 是通过什么方式进行内存分配的。&lt;/p&gt;
+
+&lt;p&gt;想起了大学时候写的半吊子&lt;a href=&quot;https://github.com/cadl/floor&quot;&gt;操作系统项目&lt;/a&gt;，通过 x86 的 memory paging 功能实现虚拟内存，虽然有很多 dirty work，但还是挺好玩的。&lt;/p&gt;
+
+&lt;h3 id=&quot;tcp-over-ip-bandwidth-overhead&quot;&gt;&lt;a href=&quot;http://packetpushers.net/tcp-over-ip-bandwidth-overhead/&quot;&gt;TCP Over IP Bandwidth Overhead&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;列举了一些不同大小的 tcp 包数据，计算因为 TCP 协议头带来的空间损失。最终给出了一个比较有意思的平均损失 13% 带宽的结论。&lt;/p&gt;
+
+&lt;h1 id=&quot;链接&quot;&gt;链接&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://redis.io/topics/streams-intro&quot;&gt;Introduction to Redis Streams&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.svds.com/how-to-choose-a-data-format/&quot;&gt;How to Choose a Data Format&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.svds.com/dataformats/&quot;&gt;http://www.svds.com/dataformats/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.proxysql.com/blog/proxysql-gtid-causal-reads&quot;&gt;Adaptive query routing based on GTID tracking&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://lefred.be/content/mysql-group-replication-read-your-own-write-across-the-group/&quot;&gt;MySQL Group Replication: read your own write across the group&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://povilasv.me/go-memory-management/&quot;&gt;Go Memory Management&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/cadl/floor&quot;&gt;我的半吊子操作系统&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://packetpushers.net/tcp-over-ip-bandwidth-overhead/&quot;&gt;TCP Over IP Bandwidth Overhead&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+
+      
+        <category term="tech-weekly" />
+      
+
+      
+
+      
+        <summary type="html">大家好，这里是 tech weekly 第 04 期。</summary>
+      
+
+      
+      
+    </entry>
+  
+  
+  
+    <entry>
+      
+      <title type="html">tech weekly 第 03 期</title>
+      
+      <link href="https://cadl.github.io/2018/05/20/tech-weekly-03/" rel="alternate" type="text/html" title="tech weekly 第 03 期" />
+      <published>2018-05-20T14:40:00+00:00</published>
+      <updated>2018-05-20T14:40:00+00:00</updated>
+      <id>https://cadl.github.io/2018/05/20/tech-weekly-03</id>
+      <content type="html" xml:base="https://cadl.github.io/2018/05/20/tech-weekly-03/">&lt;p&gt;大家好，这里是 tech weekly 第 03 期。&lt;/p&gt;
+
+&lt;h1 id=&quot;新闻&quot;&gt;新闻&lt;/h1&gt;
+&lt;h3 id=&quot;titus-the-netflix-container-management-platform-is-now-open-source&quot;&gt;&lt;a href=&quot;https://medium.com/netflix-techblog/titus-the-netflix-container-management-platform-is-now-open-source-f868c9fb5436&quot;&gt;Titus, the Netflix container management platform, is now open source&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Netflix 开源了他们内部使用的基于 Mesos 的容器管理平台&lt;a href=&quot;https://github.com/Netflix/titus&quot;&gt;Titus&lt;/a&gt;。Netflix 之前的一些&lt;a href=&quot;https://medium.com/netflix-techblog/the-evolution-of-container-usage-at-netflix-3abfc096781b&quot;&gt;博客(The Evolution of Container Usage at Netflix)&lt;/a&gt;里也有提到过这个系统。&lt;/p&gt;
+
+&lt;h3 id=&quot;google-修改了-code-of-conduct&quot;&gt;&lt;a href=&quot;https://abc.xyz/investor/other/google-code-of-conduct.html&quot;&gt;Google 修改了 Code of Conduct&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;删除了原来位于文首的关于 &lt;code class=&quot;highlighter-rouge&quot;&gt;Don't be evil&lt;/code&gt; 的段落，但是最后的总结(&lt;code class=&quot;highlighter-rouge&quot;&gt;And remember… don’t be evil, and if you see something that you think isn’t right – speak up!&lt;/code&gt;)还在。&lt;/p&gt;
+
+&lt;h1 id=&quot;文章&quot;&gt;文章&lt;/h1&gt;
+&lt;h3 id=&quot;scaling-slacks-job-queue&quot;&gt;&lt;a href=&quot;https://slack.engineering/scaling-slacks-job-queue-687222e9d100&quot;&gt;Scaling Slack’s Job Queue&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;slack 关于任务队列系统的一篇博文。slack 在他们应用中大量使用了该系统，诸如推送提醒、获取 url 信息、计算账单等长耗时的操作都是通过异步任务来完成。平均一天14亿次异步任务执行，高峰33000次/秒。&lt;/p&gt;
+
+&lt;p&gt;slack 原有的任务队列系统基于 redis 实现，web 应用和任务执行 worker 都与 redis 集群直接连接。原有方案有一个主要的问题就是一旦任务消费速度比不上生产速度，redis 这种内存数据库就可能就会因为消息的不断挤压而宕掉。&lt;/p&gt;
+
+&lt;p&gt;slack 考虑到更换架构的成本，根据原有的架构，在 redis 前放了一层 kafka，web 应用通过一个无状态的 HTTP 服务，向 kafka 中写入数据。开发了一个叫 JQRelay 的程序，读取每个 kafka topic partition 中的数据，写入到 redis 中。并由 JQRelay 控制写入 redis 速率，避免 redis 挤爆。&lt;/p&gt;
+
+&lt;p&gt;文中除了前后的架构说明，还介绍了他们 kafka 集群的配置、如何对整个系统进行性能/容错测试，以及如何将新系统滚动升级到线上的过程。个人觉得整篇文章写得非常用心，实践性很强。&lt;/p&gt;
+
+&lt;h3 id=&quot;algorithms-behind-modern-storage-systems&quot;&gt;&lt;a href=&quot;https://queue.acm.org/detail.cfm?id=3220266&quot;&gt;Algorithms Behind Modern Storage Systems&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;介绍存储系统中常见的两种数据组织方式：B-tree 和 LSM，以及他们使用场景。除了文中介绍的 SSTables，bitcask 也是一种 log structured 这种策略的存储引擎。很多非关系型数据库比如 LevelDB、Cassandra、Hbase 等等也都使用了 log structured 这种方式。&lt;/p&gt;
+
+&lt;h3 id=&quot;mysql索引背后的数据结构及算法原理&quot;&gt;&lt;a href=&quot;http://blog.codinglabs.org/articles/theory-of-mysql-index.html&quot;&gt;MySQL索引背后的数据结构及算法原理&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;局部性原理/磁盘预读/MyISAM 和 InnoDB 索引实现上的区别/聚簇索引。&lt;/p&gt;
+
+&lt;p&gt;使用 InnoDB 时，出于数据插入性能考虑，一定要使用自增主键。&lt;/p&gt;
+
+&lt;h3 id=&quot;linux-test-command-tutorial-for-beginners-with-examples&quot;&gt;&lt;a href=&quot;https://www.howtoforge.com/linux-test-command/&quot;&gt;Linux test Command Tutorial for Beginners (with Examples)&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;使用 test command 的几种姿势。检查字符串/数字/文件属性等。&lt;/p&gt;
+
+&lt;h1 id=&quot;链接&quot;&gt;链接&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://queue.acm.org/detail.cfm?id=3220266&quot;&gt;Algorithms Behind Modern Storage Systems&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/Netflix/titus&quot;&gt;Titus&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/netflix-techblog/the-evolution-of-container-usage-at-netflix-3abfc096781b&quot;&gt;The Evolution of Container Usage at Netflix&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://abc.xyz/investor/other/google-code-of-conduct.html&quot;&gt;Google Code of Conduct&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://slack.engineering/scaling-slacks-job-queue-687222e9d100&quot;&gt;Scaling Slack’s Job Queue&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://queue.acm.org/detail.cfm?id=3220266&quot;&gt;Algorithms Behind Modern Storage Systems&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.codinglabs.org/articles/theory-of-mysql-index.html&quot;&gt;MySQL索引背后的数据结构及算法原理&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.howtoforge.com/linux-test-command/&quot;&gt;Linux test Command Tutorial for Beginners (with Examples)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+
+      
+        <category term="tech-weekly" />
+      
+
+      
+
+      
+        <summary type="html">大家好，这里是 tech weekly 第 03 期。</summary>
+      
+
+      
+      
+    </entry>
+  
+  
+  
+    <entry>
+      
+      <title type="html">tech weekly 第 02 期</title>
+      
+      <link href="https://cadl.github.io/2018/05/13/tech-weekly-02/" rel="alternate" type="text/html" title="tech weekly 第 02 期" />
+      <published>2018-05-13T08:00:00+00:00</published>
+      <updated>2018-05-13T08:00:00+00:00</updated>
+      <id>https://cadl.github.io/2018/05/13/tech-weekly-02</id>
+      <content type="html" xml:base="https://cadl.github.io/2018/05/13/tech-weekly-02/">&lt;p&gt;大家好，这里是 tech weekly 第 02 期。&lt;/p&gt;
+
+&lt;h3 id=&quot;google-duplex&quot;&gt;&lt;a href=&quot;https://ai.googleblog.com/2018/05/duplex-ai-system-for-natural-conversation.html&quot;&gt;Google Duplex&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Google 在 Google I/O 上发布了一个可以进行自然语言对话的 AI 技术。逻辑以及声音非常逼真，基本辨认不出对面是一个机器在回答问题，非常梦幻。目前只能在某些特定场景使用，比如打电话给餐馆订餐等。&lt;/p&gt;
+
+&lt;p&gt;Duplex 打电话给餐馆： &lt;audio controls=&quot;controls&quot; src=&quot;http://www.gstatic.com/b-g/5717BWTLRKCBB8JUDQ1QUA6HMC26WL238301173.mp3&quot;&gt;&lt;/audio&gt;&lt;/p&gt;
+
+&lt;p&gt;博客里介绍，Duplex 的核心是由 TensorFlow Extended 搭建的神经网络。通过将 concatenative TTS 引擎和 synthesis TTS 引擎组合在一起，让对话听起来更自然。（orz 不知道啥意思）&lt;/p&gt;
+
+&lt;p&gt;希望以后能出搭讪女孩子的模式。&lt;/p&gt;
+
+&lt;h3 id=&quot;pyre&quot;&gt;&lt;a href=&quot;https://www.facebook.com/notes/protect-the-graph/pyre-fast-type-checking-for-python/2048520695388071/&quot;&gt;Pyre&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Facebook 开源了一个通过 type hint 方式来完成 python 类型检查的工具 &lt;a href=&quot;https://github.com/facebook/pyre-check&quot;&gt;Pyre&lt;/a&gt;，功能上对标 mypy。检查结果可以以 JSON 的形式返回，同时也支持 &lt;a href=&quot;https://microsoft.github.io/language-server-protocol/&quot;&gt;LSP 协议&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;lsp&quot;&gt;&lt;a href=&quot;https://microsoft.github.io/language-server-protocol/&quot;&gt;LSP&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;LSP(Language Server protocol) 是微软和 Codenvy 一起推出的，定义编辑器和计算机语言关于代码补全、定义跳转等功能的一套标准协议。意图只要实现一门语言的 Language Server，各个支持 LSP 的编辑器/IDE 就可以直接支持该语言的插件功能了。&lt;/p&gt;
+
+&lt;h3 id=&quot;gos-declaration-syntax&quot;&gt;&lt;a href=&quot;https://blog.golang.org/gos-declaration-syntax&quot;&gt;Go’s Declaration Syntax&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;这周重新过了一遍 Go 语言的 tutorial，里面提及了这篇老博客，介绍为何 Go 的声明语法是现在这个样子。主要对比 C 语言，Rob Pike 列举了几个变量定义 &lt;code class=&quot;highlighter-rouge&quot;&gt;int *p&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;int a[3]&lt;/code&gt;、 &lt;code class=&quot;highlighter-rouge&quot;&gt;char *argv[]&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;int (*fp)(int a, int b)&lt;/code&gt; 等等。&lt;/p&gt;
+
+&lt;p&gt;正确分辨出这样一个变量的定义确实比较蛋疼，记得上学的时候专门写过一个脚本，来解释一个变量在定义语句中的意义。有一个不算简单也不算复杂的规则，举&lt;code class=&quot;highlighter-rouge&quot;&gt;char *argv[]&lt;/code&gt;的例子来说，先看 &lt;code class=&quot;highlighter-rouge&quot;&gt;argv&lt;/code&gt; 的右边，表示 &lt;code class=&quot;highlighter-rouge&quot;&gt;argv&lt;/code&gt; 是一个数组，再向左看，数组中的内容是 &lt;code class=&quot;highlighter-rouge&quot;&gt;char *&lt;/code&gt;。Go 将变量名字放到定义的最左边，就算碰到比较复杂的情况也不会出现需要左右往复看的情况，在定义语句中直接拿掉变量名称，也不会造成什么困扰。&lt;/p&gt;
+
+&lt;h3 id=&quot;关于-mysql-gtid&quot;&gt;&lt;a href=&quot;https://dev.mysql.com/doc/refman/5.6/en/replication-gtids.html&quot;&gt;关于 Mysql GTID&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;这周补了一些关于 Mysql GTID 的知识。GTID 是一个事务的全局唯一编号，由数据库实例 uuid 和该实例上单调递增的事务 id 组成。用于取代过去通过 binlog 文件偏移位置定位复制位置的方式，做数据库同步和 failover 都提供了很大的便利。&lt;/p&gt;
+
+&lt;p&gt;GTID 相关有几个变量：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Executed_Gtid_Set 表示当前实例执行过的 GTID 集合&lt;/li&gt;
+  &lt;li&gt;Retrieved_Gtid_set 表示 slave 从 master 上获取的 GTID 集合&lt;/li&gt;
+  &lt;li&gt;gtid_next 表示下一个 GTID 取值方式。可以根据当前 GTID 自动生成下一个 GTID，也可以显示指定下一个 GTID 的值&lt;/li&gt;
+  &lt;li&gt;gtid_purged 表示已被清除的 binlog 事务集合&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;产生一条 binlog 时，会在事务前指定 gtid_next 的值到 binlog 中。slave 回放主库 binlog 时，会设定 binlog 中指定的 gtid_next。创建 slave 时，master 通过 slave 传递的 Executed_Gtid_Set 和 Retrieved_Gtid_set 信息，找到合适的 binlog 位置，发送 binlog 给 slave。&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+
+      
+        <category term="tech-weekly" />
+      
+
+      
+
+      
+        <summary type="html">大家好，这里是 tech weekly 第 02 期。</summary>
+      
+
+      
+      
+    </entry>
+  
+  
+  
+    <entry>
+      
+      <title type="html">tech weekly 第 01 期</title>
+      
+      <link href="https://cadl.github.io/2018/05/06/tech-weekly-01/" rel="alternate" type="text/html" title="tech weekly 第 01 期" />
+      <published>2018-05-06T14:28:00+00:00</published>
+      <updated>2018-05-06T14:28:00+00:00</updated>
+      <id>https://cadl.github.io/2018/05/06/tech-weekly-01</id>
+      <content type="html" xml:base="https://cadl.github.io/2018/05/06/tech-weekly-01/">&lt;p&gt;大家好，这里是 tech weekly 第 01 期。&lt;/p&gt;
+
+&lt;h1 id=&quot;新闻&quot;&gt;新闻&lt;/h1&gt;
+
+&lt;h3 id=&quot;gvisor&quot;&gt;&lt;a href=&quot;https://github.com/google/gvisor&quot;&gt;gvisor&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;google 开源了一个叫作 &lt;a href=&quot;https://github.com/google/gvisor&quot;&gt;gvisor&lt;/a&gt;的项目。旨在提供一个沙盒化的 container runtime，由 go 语言实现。兼容 &lt;a href=&quot;https://www.opencontainers.org/&quot;&gt;OCI&lt;/a&gt; 标准，可以与 docker 等工具集成使用。&lt;/p&gt;
+
+&lt;p&gt;看了一下项目的 readme，貌似是通过 ptrace hook 掉系统调用，替换为用户态的实现，来达到沙盒的目的。看到 ptrace，第一反应就是以后借助 gvisor，实现 online judge 程序会变得简单很多。&lt;/p&gt;
+
+&lt;h3 id=&quot;twitter-keeping-your-account-secure&quot;&gt;&lt;a href=&quot;https://blog.twitter.com/official/en_us/topics/company/2018/keeping-your-account-secure.html&quot;&gt;twitter: Keeping your account secure&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;twitter 近日发布&lt;a href=&quot;https://blog.twitter.com/official/en_us/topics/company/2018/keeping-your-account-secure.html&quot;&gt;公告&lt;/a&gt;，提醒用户修改密码以提高帐号的安全性。原因是 twitter 发现自己的程序在某个日志中记录了明文密码。此类问题应该如何避免，一些日志的框架/库比如 python 的 logging 模块或者 java log4j 等等都有提供 filter 的功能。可以借助 filter，制定一些规则来过滤敏感信息。但远没有这么简单，除了日志，任何发生数据流动的环节都可能会出现类似的问题。&lt;/p&gt;
+
+&lt;h1 id=&quot;文章&quot;&gt;文章&lt;/h1&gt;
+
+&lt;h3 id=&quot;writing-testable-code&quot;&gt;&lt;a href=&quot;https://testing.googleblog.com/2008/08/by-miko-hevery-so-you-decided-to.html&quot;&gt;writing testable code&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;一篇很老的文章，出自 google 测试团队博客。一直感觉写出便于测试的代码是一件特别困难的事情，首先做到的基本前提就是模块边界、依赖处理清晰，接口设计合理。&lt;/p&gt;
+
+&lt;p&gt;文中罗列了 writing testable code 需要注意的一些点。比如不要将 object 的构造和逻辑混合、如何处理依赖(“Ask for things, Don’t look for things”)、谨慎全局变量/单例/静态方法、区分 value object 等等。&lt;/p&gt;
+
+&lt;p&gt;各种啰嗦的 factory 以及依赖注入是有存在道理的。联系到之前 CPyUG 里关于依赖注入的&lt;a href=&quot;https://groups.google.com/forum/?hl=fil#!topic/python-cn/gup7mNgOniA&quot;&gt;讨论&lt;/a&gt;，在动态语言上应用依赖注入的分歧还很大，貌似也没有太好的实践。然而春天已经快过去了，我还没有学习 spring……&lt;/p&gt;
+
+&lt;h3 id=&quot;understanding-actor-concurrency-part-1-actors-in-erlang&quot;&gt;&lt;a href=&quot;https://www.javaworld.com/article/2077999/java-concurrency/understanding-actor-concurrency--part-1--actors-in-erlang.html&quot;&gt;Understanding actor concurrency, Part 1: Actors in Erlang&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;也是一篇很老的文章，通过 erlang 几个 tutorial 般的操作，简单介绍了 actor 模型。从消息传递的角度看，actor 和 OO 的关系就很暧昧了。或者说 OO 的概念本来就很暧昧。&lt;/p&gt;
+
+&lt;h3 id=&quot;apache-kafka-best-practices&quot;&gt;&lt;a href=&quot;https://www.slideshare.net/HadoopSummit/apache-kafka-best-practices&quot;&gt;Apache kafka best practices&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;一个关于 kafka 实践的 slide。有一些关于硬件配置，系统调优，replication，参数配置等内容。&lt;/p&gt;
+
+&lt;h3 id=&quot;知乎-feed-流架构演进&quot;&gt;&lt;a href=&quot;http://www.infoq.com/cn/presentations/architecture-evolution-of-zhihu-feed-flow&quot;&gt;知乎 feed 流架构演进&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;知乎借助 redis module 对 feed 流进行改进的演讲视频。为了解决从 feed 数据源拉取数据后进行过滤聚合等操作导致的拉取数量不确定、奇怪缓存逻辑、实时性差、网络开销等问题，将计算逻辑下沉封装到 redis module 中。&lt;/p&gt;
+
+&lt;p&gt;也介绍了其中碰到的一些问题：redis module 存在的坑、redis 单线程带来的 cpu 瓶颈等。&lt;/p&gt;
+
+&lt;h1 id=&quot;关于服务容错&quot;&gt;关于服务容错&lt;/h1&gt;
+
+&lt;h3 id=&quot;circuitbreaker&quot;&gt;&lt;a href=&quot;http://martinfowler.com/bliki/CircuitBreaker.html&quot;&gt;CircuitBreaker&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Martin Fowler 关于 circuit breaker 的一篇介绍性文章。&lt;/p&gt;
+
+&lt;h3 id=&quot;美团-服务容错模式&quot;&gt;&lt;a href=&quot;https://tech.meituan.com/service-fault-tolerant-pattern.html&quot;&gt;美团-服务容错模式&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;几种常见模式以及 hystrix 的介绍。&lt;/p&gt;
+
+&lt;h3 id=&quot;how-hystrix-works&quot;&gt;&lt;a href=&quot;https://github.com/Netflix/Hystrix/wiki/How-it-Works&quot;&gt;how hystrix works&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;hystrix 是 netflix 开源的一个处理延迟和服务容错的库。wiki 里画的工作流程图还比较清晰。&lt;/p&gt;
+
+&lt;h3 id=&quot;failsafe&quot;&gt;&lt;a href=&quot;https://github.com/jhalterman/failsafe&quot;&gt;Failsafe&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Failsafe 是一个相比 hystrix 轻量一些的库，api 也更清爽些。比较 hystrix，failsafe 增加了重试功能，更多区别见&lt;a href=&quot;https://github.com/jhalterman/failsafe/wiki/Comparisons&quot;&gt;Failsafe vs Hystrix&lt;/a&gt;。failsafe 的&lt;a href=&quot;https://github.com/jhalterman/failsafe/wiki/Who's-Using-Failsafe&quot;&gt;用户列表&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;碰到的一些坑&quot;&gt;碰到的一些坑&lt;/h1&gt;
+
+&lt;h3 id=&quot;kafka-connect-hdfs-无法与-regexrouter-smt-配合使用&quot;&gt;kafka-connect-hdfs 无法与 RegexRouter SMT 配合使用&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.confluent.io/product/connectors/&quot;&gt;kafka connect&lt;/a&gt; 是方便连通其他系统数据的一个 kafka 组件。集成 source/sink connector 插件，可以从其他系统中导入数据至 kafka，也可从 kafka 导出数据到其他系统。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.confluent.io/current/connect/connect-hdfs/docs/index.html&quot;&gt;kafka-connect-hdfs&lt;/a&gt; 是 confluent 提供的一个 sink connector，向 hdfs 导入数据，同时可以结合 hive metastore api，创建 hive 表，写入 hive 表数据至 hdfs。SMT 是 kafka-connect 的一个机制，可以以插件的形式对数据记录进行某些操作，比如增减数据字段。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.confluent.io/current/connect/transforms/regexrouter.html&quot;&gt;RegexRouter&lt;/a&gt; 是 kafka-connect 内置的一个 SMT，可以对数据记录上附着的 kafka topic 名称做一些映射修改。但是，kafka-connect-hdfs 因为实现问题，无法与 RegexRouter 配合工作(抛 NPE)，导致 hive 表中的名字只能很僵硬地跟 kafka topic 名称对应。&lt;/p&gt;
+
+&lt;h3 id=&quot;parquet-tools-merge-功能不合并-row-group&quot;&gt;parquet-tools merge 功能不合并 Row Group&lt;/h3&gt;
+
+&lt;p&gt;某些场景下有大量容量很小的 parquet 文件，为了提高 Hadoop 生态的操作效率，需要对这些小文件进行合并。&lt;/p&gt;
+
+&lt;p&gt;Apache parquet-tools 提供了一个 merge 功能。使用后发现，合并操作并没合并 parquet 中的 Row Group 结构(可以理解为把文件单纯地拼接起来)。相对于原来众多小文件的形式，因为 MR 并行度降低，效率反而会降低很多。&lt;/p&gt;
+
+&lt;h1 id=&quot;本周最佳音乐专辑&quot;&gt;本周最佳音乐专辑&lt;/h1&gt;
+
+&lt;h3 id=&quot;random-access-memories&quot;&gt;&lt;a href=&quot;https://music.douban.com/subject/22951704/&quot;&gt;Random Access Memories&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;一张名字叫 RAM 的电子专辑。&lt;/p&gt;
+
+&lt;h1 id=&quot;链接&quot;&gt;链接&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/google/gvisor&quot;&gt;gvisor&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.twitter.com/official/en_us/topics/company/2018/keeping-your-account-secure.html&quot;&gt;twitter: Keeping your account secure&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://testing.googleblog.com/2008/08/by-miko-hevery-so-you-decided-to.html&quot;&gt;writing testable code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.javaworld.com/article/2077999/java-concurrency/understanding-actor-concurrency--part-1--actors-in-erlang.html&quot;&gt;Understanding actor concurrency, Part 1: Actors in Erlang&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.slideshare.net/HadoopSummit/apache-kafka-best-practices&quot;&gt;Apache kafka best practices&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.infoq.com/cn/presentations/architecture-evolution-of-zhihu-feed-flow&quot;&gt;知乎 feed 流架构演进&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://martinfowler.com/bliki/CircuitBreaker.html&quot;&gt;CircuitBreaker&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://tech.meituan.com/service-fault-tolerant-pattern.html&quot;&gt;美团-服务容错模式&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/Netflix/Hystrix/wiki/How-it-Works&quot;&gt;how hystrix works&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jhalterman/failsafe&quot;&gt;Failsafe&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.confluent.io/product/connectors/&quot;&gt;kafka connect&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.confluent.io/current/connect/connect-hdfs/docs/index.html&quot;&gt;kafka-connect-hdfs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.confluent.io/current/connect/transforms/regexrouter.html&quot;&gt;RegexRouter&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+
+      
+        <category term="tech-weekly" />
+      
+
+      
+
+      
+        <summary type="html">大家好，这里是 tech weekly 第 01 期。</summary>
+      
+
+      
+      
+    </entry>
+  
+  
+  
+    <entry>
+      
+      <title type="html">Welcome to Jekyll!</title>
+      
+      <link href="https://cadl.github.io/2018/02/11/welcome-to-jekyll/" rel="alternate" type="text/html" title="Welcome to Jekyll!" />
+      <published>2018-02-11T14:47:19+00:00</published>
+      <updated>2018-02-11T14:47:19+00:00</updated>
+      <id>https://cadl.github.io/2018/02/11/welcome-to-jekyll</id>
+      <content type="html" xml:base="https://cadl.github.io/2018/02/11/welcome-to-jekyll/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      
+
+      
+        <category term="jekyll" />
+      
+        <category term="update" />
+      
+
+      
+
+      
+        <summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary>
+      
+
+      
+      
+    </entry>
+  
+  
+</feed>

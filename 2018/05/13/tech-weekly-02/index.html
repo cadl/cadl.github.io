@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>tech weekly 第 02 期</title>
+  <meta name="description" content="大家好，这里是 tech weekly 第 02 期。">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://cadl.github.io/2018/05/13/tech-weekly-02/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="三月兔亭" href="https://cadl.github.io/feed.xml">
+
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="ctrlaltdeletel">
+  <meta name="twitter:title" content="tech weekly 第 02 期">
+  <meta name="twitter:description" content="大家好，这里是 tech weekly 第 02 期。">
+  
+    <meta name="twitter:creator" content="ctrlaltdeletel">
+  
+  
+
+  <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Bitter:400,700,400italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+</script>
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53244426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-53244426-1');
+</script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">三月兔亭</a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/archives/">Archives</a>
+      
+        
+        <a class="page-link" href="https://github.com/cadl">GitHub</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    
+      <h1 class="post-title" itemprop="name headline">tech weekly 第 02 期</h1>
+    
+    <p class="post-meta"><time datetime="2018-05-13T08:00:00+00:00" itemprop="datePublished">May 13, 2018</time> •
+  
+    
+    
+      
+    
+      
+    
+      
+        <a href="/categories/tech-weekly/">tech-weekly</a>
+      
+    
+      
+    
+  
+
+
+
+</p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>大家好，这里是 tech weekly 第 02 期。</p>
+
+<h3 id="google-duplex"><a href="https://ai.googleblog.com/2018/05/duplex-ai-system-for-natural-conversation.html">Google Duplex</a></h3>
+
+<p>Google 在 Google I/O 上发布了一个可以进行自然语言对话的 AI 技术。逻辑以及声音非常逼真，基本辨认不出对面是一个机器在回答问题，非常梦幻。目前只能在某些特定场景使用，比如打电话给餐馆订餐等。</p>
+
+<p>Duplex 打电话给餐馆： <audio controls="controls" src="http://www.gstatic.com/b-g/5717BWTLRKCBB8JUDQ1QUA6HMC26WL238301173.mp3"></audio></p>
+
+<p>博客里介绍，Duplex 的核心是由 TensorFlow Extended 搭建的神经网络。通过将 concatenative TTS 引擎和 synthesis TTS 引擎组合在一起，让对话听起来更自然。（orz 不知道啥意思）</p>
+
+<p>希望以后能出搭讪女孩子的模式。</p>
+
+<h3 id="pyre"><a href="https://www.facebook.com/notes/protect-the-graph/pyre-fast-type-checking-for-python/2048520695388071/">Pyre</a></h3>
+
+<p>Facebook 开源了一个通过 type hint 方式来完成 python 类型检查的工具 <a href="https://github.com/facebook/pyre-check">Pyre</a>，功能上对标 mypy。检查结果可以以 JSON 的形式返回，同时也支持 <a href="https://microsoft.github.io/language-server-protocol/">LSP 协议</a>。</p>
+
+<h3 id="lsp"><a href="https://microsoft.github.io/language-server-protocol/">LSP</a></h3>
+
+<p>LSP(Language Server protocol) 是微软和 Codenvy 一起推出的，定义编辑器和计算机语言关于代码补全、定义跳转等功能的一套标准协议。意图只要实现一门语言的 Language Server，各个支持 LSP 的编辑器/IDE 就可以直接支持该语言的插件功能了。</p>
+
+<h3 id="gos-declaration-syntax"><a href="https://blog.golang.org/gos-declaration-syntax">Go’s Declaration Syntax</a></h3>
+
+<p>这周重新过了一遍 Go 语言的 tutorial，里面提及了这篇老博客，介绍为何 Go 的声明语法是现在这个样子。主要对比 C 语言，Rob Pike 列举了几个变量定义 <code class="highlighter-rouge">int *p</code>、<code class="highlighter-rouge">int a[3]</code>、 <code class="highlighter-rouge">char *argv[]</code>、<code class="highlighter-rouge">int (*fp)(int a, int b)</code> 等等。</p>
+
+<p>正确分辨出这样一个变量的定义确实比较蛋疼，记得上学的时候专门写过一个脚本，来解释一个变量在定义语句中的意义。有一个不算简单也不算复杂的规则，举<code class="highlighter-rouge">char *argv[]</code>的例子来说，先看 <code class="highlighter-rouge">argv</code> 的右边，表示 <code class="highlighter-rouge">argv</code> 是一个数组，再向左看，数组中的内容是 <code class="highlighter-rouge">char *</code>。Go 将变量名字放到定义的最左边，就算碰到比较复杂的情况也不会出现需要左右往复看的情况，在定义语句中直接拿掉变量名称，也不会造成什么困扰。</p>
+
+<h3 id="关于-mysql-gtid"><a href="https://dev.mysql.com/doc/refman/5.6/en/replication-gtids.html">关于 Mysql GTID</a></h3>
+
+<p>这周补了一些关于 Mysql GTID 的知识。GTID 是一个事务的全局唯一编号，由数据库实例 uuid 和该实例上单调递增的事务 id 组成。用于取代过去通过 binlog 文件偏移位置定位复制位置的方式，做数据库同步和 failover 都提供了很大的便利。</p>
+
+<p>GTID 相关有几个变量：</p>
+<ul>
+  <li>Executed_Gtid_Set 表示当前实例执行过的 GTID 集合</li>
+  <li>Retrieved_Gtid_set 表示 slave 从 master 上获取的 GTID 集合</li>
+  <li>gtid_next 表示下一个 GTID 取值方式。可以根据当前 GTID 自动生成下一个 GTID，也可以显示指定下一个 GTID 的值</li>
+  <li>gtid_purged 表示已被清除的 binlog 事务集合</li>
+</ul>
+
+<p>产生一条 binlog 时，会在事务前指定 gtid_next 的值到 binlog 中。slave 回放主库 binlog 时，会设定 binlog 中指定的 gtid_next。创建 slave 时，master 通过 slave 传递的 Executed_Gtid_Set 和 Retrieved_Gtid_set 信息，找到合适的 binlog 位置，发送 binlog 给 slave。</p>
+
+  </div>
+
+  
+    <div class="post-comments" itemprop="comment">
+      <hr />
+<h1>Comments</h1>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://cadlblog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+    </div>
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+&copy;  - Powered by <a href="https://jekyllrb.com">Jekyll</a> &amp; <a href="https://github.com/yous/whiteglass">whiteglass</a> - Subscribe via <a href="https://cadl.github.io/feed.xml">RSS</a>
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

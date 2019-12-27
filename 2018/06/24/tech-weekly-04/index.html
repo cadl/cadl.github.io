@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+  
+  <title>tech weekly 第 04 期</title>
+  <meta name="description" content="大家好，这里是 tech weekly 第 04 期。">
+  
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://cadl.github.io/2018/06/24/tech-weekly-04/">
+  
+  
+  <link rel="alternate" type="application/rss+xml" title="三月兔亭" href="https://cadl.github.io/feed.xml">
+
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="ctrlaltdeletel">
+  <meta name="twitter:title" content="tech weekly 第 04 期">
+  <meta name="twitter:description" content="大家好，这里是 tech weekly 第 04 期。">
+  
+    <meta name="twitter:creator" content="ctrlaltdeletel">
+  
+  
+
+  <script type="text/javascript">
+  WebFontConfig = {
+    google: { families: [ 'Bitter:400,700,400italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+</script>
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-53244426-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-53244426-1');
+</script>
+
+
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">三月兔亭</a>
+
+    <nav class="site-nav">
+      
+        
+        <a class="page-link" href="/about/">About</a>
+      
+        
+        <a class="page-link" href="/archives/">Archives</a>
+      
+        
+        <a class="page-link" href="https://github.com/cadl">GitHub</a>
+      
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    
+      <h1 class="post-title" itemprop="name headline">tech weekly 第 04 期</h1>
+    
+    <p class="post-meta"><time datetime="2018-06-24T08:00:00+00:00" itemprop="datePublished">Jun 24, 2018</time> •
+  
+    
+    
+      
+    
+      
+    
+      
+        <a href="/categories/tech-weekly/">tech-weekly</a>
+      
+    
+      
+    
+  
+
+
+
+</p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>大家好，这里是 tech weekly 第 04 期。</p>
+
+<h1 id="文章">文章</h1>
+
+<h3 id="introduction-to-redis-streams"><a href="https://redis.io/topics/streams-intro">Introduction to Redis Streams</a></h3>
+<p>Redis 5.0 多出了一个新数据结构 stream。简单来说就是一个深度借鉴 kafka 的 log data structure 的消息队列。数据可进行持久化，并且也有 consumer group 的概念可以挂多个消费者。</p>
+
+<p>hhh，Redis 你现在还好意思叫自己 remote dictionary server 吗。</p>
+
+<h3 id="how-to-choose-a-data-format"><a href="https://www.svds.com/how-to-choose-a-data-format/">How to Choose a Data Format</a></h3>
+
+<p>如何从 sequence/avro/parquet/orc 等等中选择适合你的数据格式。</p>
+
+<p><a href="http://www.svds.com/dataformats/">http://www.svds.com/dataformats/</a> 对比了以上几种数据格式的特点，例如 row/column based、schema evolution等等。并针对不同量级的数量级进行了读/写性能测试。页面里的对比和图表很直观清晰。</p>
+
+<h3 id="adaptive-query-routing-based-on-gtid-tracking"><a href="http://www.proxysql.com/blog/proxysql-gtid-causal-reads">Adaptive query routing based on GTID tracking</a></h3>
+
+<p>ProxySQL 介绍他们如何通过使用 MySQL 5.7.6 的 <a href="https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_session_track_gtids">session_track_gtids</a> 功能，在 slave 上完成 causal consistency reads。</p>
+
+<p>通过 session_track_gtids 捕获当前执行的 gtid。使用一个读取 binlog 的 server，实时获取 cluster 中每台 MySQL server 的 executed_gtid_set。通过两者的对比，达成 causal consistency reads。</p>
+
+<h3 id="mysql-group-replication-read-your-own-write-across-the-group"><a href="http://lefred.be/content/mysql-group-replication-read-your-own-write-across-the-group/">MySQL Group Replication: read your own write across the group</a></h3>
+
+<p>介绍了 MySQL 5.7.5 的一个新功能，<a href="https://dev.mysql.com/doc/refman/5.7/en/gtid-functions.html#function_wait-for-executed-gtid-set">WAIT_FOR_EXECUTED_GTID_SET</a>。可以通过 <code class="highlighter-rouge">select WAIT_FOR_EXECUTED_GTID_SET('3E11FA47-71CA-11E1-9E33-C80AA9429562:1-5') from foo where bar = xxx;</code> 的形式，从 slave 上读到 master 上刚写的内容。</p>
+
+<h3 id="go-memory-management"><a href="https://povilasv.me/go-memory-management/">Go Memory Management</a></h3>
+
+<p>很长的一篇文章。前半部分唠叨了半天 vsz/rss，以及 x86 和操作系统的虚拟内存、分页、MMU、TLB，linux 进程的内存布局(text/data/bss/heap/stack 段)。后半部分介绍了 TCMalloc 以及 go 是通过什么方式进行内存分配的。</p>
+
+<p>想起了大学时候写的半吊子<a href="https://github.com/cadl/floor">操作系统项目</a>，通过 x86 的 memory paging 功能实现虚拟内存，虽然有很多 dirty work，但还是挺好玩的。</p>
+
+<h3 id="tcp-over-ip-bandwidth-overhead"><a href="http://packetpushers.net/tcp-over-ip-bandwidth-overhead/">TCP Over IP Bandwidth Overhead</a></h3>
+
+<p>列举了一些不同大小的 tcp 包数据，计算因为 TCP 协议头带来的空间损失。最终给出了一个比较有意思的平均损失 13% 带宽的结论。</p>
+
+<h1 id="链接">链接</h1>
+
+<ul>
+  <li><a href="https://redis.io/topics/streams-intro">Introduction to Redis Streams</a></li>
+  <li><a href="https://www.svds.com/how-to-choose-a-data-format/">How to Choose a Data Format</a></li>
+  <li><a href="http://www.svds.com/dataformats/">http://www.svds.com/dataformats/</a></li>
+  <li><a href="http://www.proxysql.com/blog/proxysql-gtid-causal-reads">Adaptive query routing based on GTID tracking</a></li>
+  <li><a href="http://lefred.be/content/mysql-group-replication-read-your-own-write-across-the-group/">MySQL Group Replication: read your own write across the group</a></li>
+  <li><a href="https://povilasv.me/go-memory-management/">Go Memory Management</a></li>
+  <li><a href="https://github.com/cadl/floor">我的半吊子操作系统</a></li>
+  <li><a href="http://packetpushers.net/tcp-over-ip-bandwidth-overhead/">TCP Over IP Bandwidth Overhead</a></li>
+</ul>
+
+  </div>
+
+  
+    <div class="post-comments" itemprop="comment">
+      <hr />
+<h1>Comments</h1>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://cadlblog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+    </div>
+  
+
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <p>
+      
+
+&copy;  - Powered by <a href="https://jekyllrb.com">Jekyll</a> &amp; <a href="https://github.com/yous/whiteglass">whiteglass</a> - Subscribe via <a href="https://cadl.github.io/feed.xml">RSS</a>
+
+    </p>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

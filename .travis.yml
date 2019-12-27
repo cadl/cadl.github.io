@@ -16,7 +16,6 @@ install:
 - npm install -g pa11y-ci
 script:
 - bundle exec jekyll clean && bundle exec jekyll build
-# - html5validator --Werror --also-check-css --also-check-svg --root _site/
 - |
   (bundle exec jekyll server -d _tmp_site & echo $! >&3) 3>jekyll.pid | grep -q 'Server running' && \
   pa11y-ci --sitemap http://localhost:4000/whiteglass/sitemap.xml && \
@@ -36,4 +35,4 @@ deploy:
     branch: src
 env:
   global:
-    secure: VGHOKWwz9YjaTBSpjTaEaTH44xEqXMR16m1mAHH82Wt3UiLMY5X4txpbEFKn7Ky6u2NkyexQ2QKpqvP7rClXV6aJIBHVCJr/gi7JxMBgu+CDX8dYzkKmawgVul0IKJFFSSOj2W/0kjXCp8ojrwN1bPCDVowQD++flXhaN38LMJjQ5a+/YcLgcD+pBKIc/8C/wGlSetEg51cIj1o7MHEijOw+J9U9yN+n3U6h5gKqHlt4XAt+2LnhQP9UeP7GJxweOEmZWXdazBzQtdFiDzL21VmOYf7kp8wlCT2bKpL9d0s4vrqn4q8LjlLSlnT7CWXKCrZo8d1LOBdRNOQBb99eo9AnwdN8qW6H3wMVMNvs3TMrjJzRDseJxA5SiaAHGwl+/AT6iYPxnkUh4UwTxIaq8rE4slDFfo8jlq0oYpBTALCmuEgsWBW874o3jdf1at7KAJ3pzVidfOsswdr0pMENESk7T/akHq8uU7TIZzOM4oRdNR/3ftbNJK99xE3McuUWSKL8jfof9ToDRsvZfSvwB9vVA1u61Y1+pM58QdilFhgDLg3KeSlsdnO/hu6nZDqW8oVErYQHucwSVqqqXg/CMM/askWUS3/cZmSD/l6I5POWoeWEuENF/LF0StN7U2gB3FCEKaBHrH/PbFYBfp0hg53tet8I2HLKh6JZMp+u/oE=
+  - secure: hU5u5/7/k0HQrYegKi4+xiVTnDCKOhO6CyfkwpcpOpMyhqw6hjm2ptZ09USx23OJSdbZtbtfexPq4Y/VoJGa+FfLtTt6vSEDuI6b7ZyMNSCCz/YkPrLdbMlF/xeVjVZXdGy+EbyUtFP5P+xT7ecz6uLqPHtJRBxDe/SDMLvgC6BlqNE5QLzI3urv3YyvVKqgeSQR2uU2yA5rNKDOLn78Su4UwslGMnSlkom73utnHMMzp3h+HPTUp2D9hzPmkpIXh+4/rOzw3lglfi287cmDZ2fFxiTiqoCF8YbaE2E4vOBhvAUeCYaLqByihzt1u2vhT+JInEz58r4xiyCMxmCI8QXXFpzpY+n0ykKUyN72fa6vQIr6DQxB71RH8VrxQIeFvMQgA3mXHBduFoOMfcfxbxzzU0aIVz31dFx6i2LaNQlug596UZWYVMC8/z57KFMVkkWbtwn3W3RBgGeI/hCJuTK0JF9Y8SZ0fqAHYqZMptGhU3qijJqtsYSvQBQ9nGdvzw62S9NealWPFs4NImGg+1rq1lCucPCIjNuLtUgQN3pu+sO+x5LVaIv6dVA97XULn8d63vP7HpmaL53sgi0f19Zn095MhRPe2cIAlD4mkAZ6g/WH0jx5pQqMeO0BmE4lhOnwzYxBif2PHGNlXDjNfeEDy08BEVgEqEB2gGR72k4=
